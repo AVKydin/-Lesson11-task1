@@ -73,9 +73,9 @@
 // console.log(d.getTime());
 // console.log(d.getTime());
 
-let setD = new Date(2022, 10, 98, 12, 00, 00);
-console.log(setD);
-console.log(setD.getTime());
+// let setD = new Date(2022, 10, 98, 12, 00, 00);
+// console.log(setD);
+// console.log(setD.getTime());
 
 
 
@@ -110,11 +110,38 @@ console.log(setD.getTime());
 // }
 // checkTime();
 
+// setInterval(() => {
+//   let dd = new Date();
+//   let hh = dd.getHours();
+//   let mm = dd.getMinutes();
+//   let ss = dd.getSeconds();
+//   if (hh < 10) {
+//     hh = `0${hh}`;
+//   }
+//   if (mm < 10) {
+//     mm = `0${mm}`;
+//   }
+//   if (ss < 10) {
+//     ss = `0${ss}`;
+//   }
+//   document.querySelector(".digital-clock").innerHTML = `${hh}:${mm}:${ss}`;
+// })
+
 setInterval(() => {
   let dd = new Date();
+  // console.log(dd);
+  let day = dd.getDate();
+  let month = dd.getMonth() + 1;
+  let year = dd.getFullYear();
+  // console.log(day);
+  // console.log(month);
+  // console.log(year);
   let hh = dd.getHours();
   let mm = dd.getMinutes();
   let ss = dd.getSeconds();
+
+  
+
   if (hh < 10) {
     hh = `0${hh}`;
   }
@@ -124,5 +151,6 @@ setInterval(() => {
   if (ss < 10) {
     ss = `0${ss}`;
   }
-  document.querySelector(".digital-clock").innerHTML = `${hh}:${mm}:${ss}`;
+    document.querySelector(".time").innerHTML = `${hh}:${mm}:${ss}`;
+    document.querySelector(".date").innerHTML = `${day}.${month}.${year}`;
 })
