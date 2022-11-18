@@ -38,18 +38,31 @@
         <!-- <div class="block"></div> -->
         <div class="block-stopwatch">
             <div>
-                <div>00:00:00:000</div>
+                <div class="stopwatch">00:00:00:000</div>
                 <div>
-                    <button>START</button>
-                    <button>LOOP</button>
-                    <button>STOP</button>
-                    <button>RESET</button>
+                    <button class="start">START</button>
+                    <button class="loop">LOOP</button>
+                    <button class="stop">STOP</button>
+                    <button class="reset">RESET</button>
                 </div>
             </div>
-            <div></div>
+            <div class="loop-time"></div>
         </div>
         <!-- <div class="block"></div> -->
-        <div class="block-timer"></div>
+        <div class="block-timer">
+            <div class="block-minutes">
+                <h2 class="count-minutes">25</h2>
+                <h4 class="minutes">MINUTES</h4>
+                <button class="plus">+</button>
+                <button class="minus">-</button>
+            </div>
+            <div class="timer">
+                <h2 class="timer-text">00:00</h2>
+                <button class="timer-start">START</button>
+                <button class="timer-stop">STOP</button>
+                <button class="timer-reset">RESET</button>
+            </div>
+        </div>
     </div>
 
     <script src="./main.js"></script>
