@@ -1,0 +1,28 @@
+.blockTimeout,
+.blockInterval{
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 10px 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(68, 66, 66);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.digital-clock{
+    width: 800px;
+    margin: auto;
+    padding: 30px;
+    border: 10px solid #000;
+    color: rgb(20, 207, 20);
+    border-radius: 20px;
+    font-size: 103px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
