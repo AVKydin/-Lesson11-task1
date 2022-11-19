@@ -129,18 +129,13 @@
 
 setInterval(() => {
   let dd = new Date();
-  // console.log(dd);
   let day = dd.getDate();
   let month = dd.getMonth() + 1;
   let year = dd.getFullYear();
-  // console.log(day);
-  // console.log(month);
-  // console.log(year);
   let hh = dd.getHours();
   let mm = dd.getMinutes();
   let ss = dd.getSeconds();
-
-  
+  let ms = dd.getMilliseconds();
 
   if (hh < 10) {
     hh = `0${hh}`;
@@ -151,6 +146,87 @@ setInterval(() => {
   if (ss < 10) {
     ss = `0${ss}`;
   }
-    document.querySelector(".time").innerHTML = `${hh}:${mm}:${ss}`;
-    document.querySelector(".date").innerHTML = `${day}.${month}.${year}`;
+  document.querySelector(".time").innerHTML = `${hh}:${mm}:${ss}:${ms}`;
+  document.querySelector(".date").innerHTML = `${day}.${month}.${year}`;
+});
+
+let start = document.querySelector(".start");
+let loop = document.querySelector(".loop");
+let stop = document.querySelector(".stop");
+let reset = document.querySelector(".reset");
+
+let stopwatch = document.querySelector(".stopwatch");
+
+start.addEventListener('click', () => {
+  clearInterval(interval);
+  interval = setInterval(startStopwatch,10);
 })
+
+  let sms = 0;
+  let sss = 0;
+  let smm = 0;
+  let shh = 0;
+let interval;
+  
+function zero(i) {
+  if (i >= 10) {
+    return i;
+  } else {
+    return `0${i}`
+  }
+}
+
+function doubleZero(i) {
+  if (i >= 100) {
+    return i;
+  } else {
+    return `0${i}`;
+  }
+}
+  
+function startStopwatch() {
+
+  if ((sms+=10) == 1000) {
+    sms = 0;
+    sss++;
+  }
+  if (sss == 60) {
+    sss = 0;
+    smm++;
+  }
+  if (smm == 60) {
+    smm = 0;
+    shh++;
+  }
+
+  document.querySelector(".stopwatch").innerHTML = `${zero(shh)} : ${zero(smm)} : ${zero(sss)} : ${doubleZero(sms)}`;
+
+    start.classList.add("activ-button");
+    loop.classList.remove("activ-button");
+    stop.classList.remove("activ-button");
+    reset.classList.remove("activ-button");
+};
+
+loop.onclick = function () {
+  loop.classList.add("activ-button");
+  start.classList.remove("activ-button");
+  stop.classList.remove("activ-button");
+  reset.classList.remove("activ-button");
+};
+
+
+stop.onclick= function() {
+  stop.classList.add("activ-button");
+  start.classList.remove("activ-button");
+  loop.classList.remove("activ-button");
+  reset.classList.remove("activ-button");
+};
+
+reset.onclick = function () {
+  reset.classList.add("activ-button");
+  start.classList.remove("activ-button");
+  loop.classList.remove("activ-button");
+  stop.classList.remove("activ-button");
+  };
+  
+
