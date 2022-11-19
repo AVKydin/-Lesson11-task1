@@ -146,7 +146,7 @@ setInterval(() => {
   if (ss < 10) {
     ss = `0${ss}`;
   }
-  document.querySelector(".time").innerHTML = `${hh}:${mm}:${ss}:${ms}`;
+  document.querySelector(".time").innerHTML = `${hh}:${mm}:${ss}`;
   document.querySelector(".date").innerHTML = `${day}.${month}.${year}`;
 });
 
@@ -157,6 +157,7 @@ let reset = document.querySelector(".reset");
 
 let stopwatch = document.querySelector(".stopwatch");
 
+// button start
 start.addEventListener('click', () => {
   clearInterval(interval);
   interval = setInterval(startStopwatch,10);
@@ -166,7 +167,7 @@ start.addEventListener('click', () => {
   let sss = 0;
   let smm = 0;
   let shh = 0;
-let interval;
+  let interval;
   
 function zero(i) {
   if (i >= 10) {
@@ -207,26 +208,57 @@ function startStopwatch() {
     reset.classList.remove("activ-button");
 };
 
+//button loop
 loop.onclick = function () {
+  let p = document.createElement("p");
+  p.innerHTML = document.querySelector(".stopwatch").innerHTML;
+  p.className = 'p';
+  console.log(p.className);
+  
+  document.querySelector(".loop-time").append(p);
+  console.log(document.querySelectorAll(".p"));
   loop.classList.add("activ-button");
   start.classList.remove("activ-button");
   stop.classList.remove("activ-button");
   reset.classList.remove("activ-button");
+
+  if (document.querySelectorAll(".p").length > 7) {
+  document.querySelector(".max").style.display = 'block';
+  document.querySelector(".loop-time").innerHTML = "";
+    
+  }
 };
 
-
-stop.onclick= function() {
-  stop.classList.add("activ-button");
+//button stop
+stop.addEventListener('click', () => {
+  clearInterval(interval);
   start.classList.remove("activ-button");
   loop.classList.remove("activ-button");
+  stop.classList.add("activ-button");
   reset.classList.remove("activ-button");
-};
+})
 
+
+
+//button reset
 reset.onclick = function () {
+  clearInterval(interval);
+  sms = 0;
+  sss = 0;
+  smm = 0;
+  shh = 0;
+  document.querySelector(".stopwatch").innerHTML = `${zero(shh)} : ${zero(smm)} : ${zero(sss)} : ${doubleZero(sms)}`;
+  document.querySelector(".loop-time").innerHTML = "";
   reset.classList.add("activ-button");
   start.classList.remove("activ-button");
   loop.classList.remove("activ-button");
   stop.classList.remove("activ-button");
-  };
+};
+  
+let btnMax = document.querySelector(".btn-max");
+
+btnMax.onclick = function () {
+  document.querySelector(".max").style.display = "none";
+}
   
 

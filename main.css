@@ -77,6 +77,42 @@ button:hover{
     color: rgb(48, 224, 13);;
 }
 
+
+.loop-time{
+  display: block;
+  margin: 10px auto;
+}
+
+.loop-time>p{
+height: 10px;
+text-align: center;
+}
+
+.max{
+    width: 1200px;
+    height: 250px;
+    border: 2px solid red;
+    background-color: pink;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.max>h2{
+    flex: 56;
+    margin-top: 110px;
+}
+
+.btn-max{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: pink;
+    border: none;
+    color: brown;
+}
+
+
 .block-minutes{
     display: flex;
     width: 150px;
