@@ -1,131 +1,3 @@
-// setTimeout(function () {
-//     document.write(`<h2>setTimeout</h2>`);
-// }, 2000)
-
-// let timeoutID;
-
-// function startTimeout() {
-//   timeoutID = setTimeout( ()=> {
-//     document.querySelector(".blockTimeout").innerHTML = `<h2>setTimeout</h2>`;
-//   }, 2000);
-// }
-
-// function stopTimeout() {
-//     clearTimeout(timeoutID);
-// }
-
-// setInterval(function () {
-//      document.write(`<h2>setInterval</h2>`);
-// }, 2000)
-
-// let intervalID;
-
-// function createElement() {
-//      let h2 = document.createElement('h2');
-//      h2.textContent = 'setInterval';
-//      document.querySelector(".blockInterval").append(h2);
-// //      if (document.querySelector(".blockInterval").children.length >= 5) {
-// //   clearInterval(intervalID);
-    
-// //      }
-     
-// }
-
-// function startInterval() {
-//      intervalID = setInterval(createElement, 2000);
-//      document.querySelector(".start").disabled = true;
-//      document.querySelector(".stop").disabled = false;
-// };
-
-// function stopInterval() {
-//      clearInterval(intervalID);
-//      document.querySelector(".start").disabled = false;
-//      document.querySelector(".stop").disabled = true;
-// };
-
-// let d = new Date();
-// console.log(d);
-// console.log(d.getDay());
-// console.log(d.getDate());
-// console.log(d.getMonth());
-// console.log(d.getFullYear());
-// console.log(d.getHours());
-// console.log(d.getMinutes());
-// console.log(d.getSeconds());
-// console.log(d.getMilliseconds());
-// console.log(d.getTimezoneOffset());
-
-// console.log(new Date(2020, 6, 1, 12, 00, 00));
-
-// let setD = new Date(2020, 6, 1, 12, 00, 00);
-
-// let start = d.getTime();
-// let end;
-
-// setTimeout(() => {
-//      end = new Date().getTime();
-//      console.log(start);
-//      console.log(end);
-//      console.log(end - start);
-   
-// }, 1000);
-
-// console.log(d.getTime());
-// console.log(d.getTime());
-
-// let setD = new Date(2022, 10, 98, 12, 00, 00);
-// console.log(setD);
-// console.log(setD.getTime());
-
-
-
-// function checkTime() {
-//      setInterval(() => {
-//        let currentD = new Date();
-//        let rizn = setD.getTime() - currentD;
-
-
-       // console.log(currentD);
-       // console.log(currentD.getTime());
-       // console.log(rizn);
-       // let hours = parseInt(rizn / (60 * 60000));
-       // let minutes = rizn / (60 * 1000);
-
-       // let seconds = rizn / 1000;
-       // let minutes = seconds / 60;
-       // let hours = minutes / 60;
-       // console.log(hours);
-       // console.log(minutes);
-       // console.log(seconds);
-
-    //    let hours = Math.floor((rizn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    //    let minutes = Math.floor((rizn % (1000 * 60 * 60 )) / (1000 * 60));
-    //    let seconds = Math.floor((rizn % (1000 * 60 )) / 1000 );
-    //   //  console.log(hours);
-    //   //  console.log(minutes);
-    //   //  console.log(seconds);
-    //    document.querySelector(".coutDown").innerHTML = `${hours}:${minutes}:${seconds}`;
-    //  }, 1000)
-      
-// }
-// checkTime();
-
-// setInterval(() => {
-//   let dd = new Date();
-//   let hh = dd.getHours();
-//   let mm = dd.getMinutes();
-//   let ss = dd.getSeconds();
-//   if (hh < 10) {
-//     hh = `0${hh}`;
-//   }
-//   if (mm < 10) {
-//     mm = `0${mm}`;
-//   }
-//   if (ss < 10) {
-//     ss = `0${ss}`;
-//   }
-//   document.querySelector(".digital-clock").innerHTML = `${hh}:${mm}:${ss}`;
-// })
 
 setInterval(() => {
   let dd = new Date();
@@ -213,10 +85,8 @@ loop.onclick = function () {
   let p = document.createElement("p");
   p.innerHTML = document.querySelector(".stopwatch").innerHTML;
   p.className = 'p';
-  console.log(p.className);
   
   document.querySelector(".loop-time").append(p);
-  console.log(document.querySelectorAll(".p"));
   loop.classList.add("activ-button");
   start.classList.remove("activ-button");
   stop.classList.remove("activ-button");
@@ -225,8 +95,8 @@ loop.onclick = function () {
   if (document.querySelectorAll(".p").length > 7) {
   document.querySelector(".max").style.display = 'block';
   document.querySelector(".loop-time").innerHTML = "";
-    
   }
+  
 };
 
 //button stop
@@ -254,11 +124,102 @@ reset.onclick = function () {
   loop.classList.remove("activ-button");
   stop.classList.remove("activ-button");
 };
-  
+
+
+//button Max
+
 let btnMax = document.querySelector(".btn-max");
 
 btnMax.onclick = function () {
   document.querySelector(".max").style.display = "none";
 }
   
+//button plus
 
+let plus = document.querySelector(".plus");
+let countMinutes = document.querySelector(".count-minutes");
+let minutes = 25;
+
+
+plus.onclick = function () {
+  countMinutes.innerHTML = +countMinutes.innerHTML + 1;
+  document.querySelector(".count-minutes").innerHTML = countMinutes.innerHTML;
+  plus.classList.add("activ-button");
+  minus.classList.remove("activ-button");
+  timerStart.classList.remove("activ-button");
+  minutes++;
+}
+
+//button minus
+
+let minus = document.querySelector(".minus");
+minus.onclick = function () {
+  countMinutes.innerHTML = +countMinutes.innerHTML - 1;
+  document.querySelector(".count-minutes").innerHTML = countMinutes.innerHTML;
+  minus.classList.add("activ-button");
+  plus.classList.remove("activ-button");
+  timerStart.classList.remove("activ-button");
+  minutes--;
+};
+
+//  timer
+
+let timerText = document.querySelector(".timer-text");
+let timerStart = document.querySelector(".timer-start");
+
+//button START
+
+let intervalTimer
+
+timerStart.addEventListener('click', () => {
+  clearInterval(intervalTimer);
+  intervalTimer = setInterval(startTimer, 1000);
+  timerStart.classList.add("activ-button");
+  minus.classList.remove("activ-button");
+  plus.classList.remove("activ-button");
+  stopTimer.classList.remove("activ-button");
+  resetTimer.classList.remove("activ-button");
+})
+
+let seconds = +00;
+
+
+function startTimer() {
+  timerText.innerHTML = `${minutes}:${zero(seconds)}`;
+  
+  if (seconds == 00) {
+    seconds = 59;
+    minutes--;
+  }
+  
+  timerText.innerHTML = `${minutes}:${zero(seconds)}`;
+  seconds--;
+};
+
+//button STOP
+
+let stopTimer = document.querySelector(".timer-stop");
+
+stopTimer.onclick = function () {
+  clearInterval(intervalTimer);
+    stopTimer.classList.add("activ-button");
+  timerStart.classList.remove("activ-button");
+  resetTimer.classList.remove("activ-button");
+  minus.classList.remove("activ-button");
+  plus.classList.remove("activ-button");
+}
+
+//button RESET
+
+let resetTimer = document.querySelector(".timer-reset");
+
+resetTimer.onclick = function () {
+  
+  timerText.innerHTML = "00:00";
+  clearInterval(intervalTimer);
+  resetTimer.classList.add("activ-button");
+  stopTimer.classList.remove("activ-button");
+  timerStart.classList.remove("activ-button");
+  minus.classList.remove("activ-button");
+  plus.classList.remove("activ-button");
+}
